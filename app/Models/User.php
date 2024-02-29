@@ -34,6 +34,17 @@ class User extends Authenticatable
     ];
 
     /**
+     * Determine the redirect route based on the user's role.
+     *
+     * @return string
+     */
+    public function getRedirectRoute(): string
+    {
+        return $this->role === 'admin' ? '/events' : '/';
+    }
+
+
+    /**
      * The attributes that should be cast.
      *
      * @var array<string, string>
@@ -42,4 +53,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function events(): HasMany
+    {
+        return $this->hasMany(Event::class);
+    }
+     public function attendings(): HasMany
+    {
+        return $this->hasMany(Attending::class);
+    }
 }

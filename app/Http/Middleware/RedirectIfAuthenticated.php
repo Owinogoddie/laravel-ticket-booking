@@ -19,11 +19,28 @@ class RedirectIfAuthenticated
     {
         $guards = empty($guards) ? [null] : $guards;
 
-        foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
-            }
+       
+    foreach ($guards as $guard) {
+        if (Auth::guard($guard)->check()) {
+            return redirect(Auth::user()->getRedirectRoute());
+            // Get the user's role
+            // $role = Auth::user()->role;
+
+            // // Redirect to different views based on the role
+            // switch ($role) {
+            //     case 'admin':
+            //         return redirect('/events');
+            //         break;
+            //     case 'user':
+            //         return redirect('/');
+            //         break;
+            //     default:
+            //         return redirect('/');
+            //         break;
+            // }
         }
+    }
+
 
         return $next($request);
     }
