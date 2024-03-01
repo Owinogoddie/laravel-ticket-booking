@@ -25,7 +25,7 @@ const UserTickets = ({ auth, events }) => {
                                     <div class="lg:flex bg-slate-100 rounded-md">
                                         <img
                                             class="object-cover w-full h-56 rounded-lg lg:w-64"
-                                            src={`/uploads/${event.image}`}
+                                            src={`storage/uploads/${event.image}`}
                                             alt={event.title}
                                         />
 
