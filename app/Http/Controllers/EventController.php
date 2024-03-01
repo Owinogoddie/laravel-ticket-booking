@@ -53,7 +53,10 @@ class EventController extends Controller
 
         $fileName = time() . '.' . $file->getClientOriginalExtension();
     $destinationPath = public_path('uploads'); // Make sure the directory exists
-    $file->move($destinationPath, $fileName);
+    // $file->move($destinationPath, $fileName);
+    $file->storeAs($destinationPath, $fileName);
+
+    // $file->storeAs('public/uploads', $final_name);
 
         Event::create([
             'title' => $request->title,
