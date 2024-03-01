@@ -72,7 +72,7 @@ const Index = ({ auth, events }) => {
                                                     
                                                     href={route("events.destroy",event.id)}
                                                     method="delete"
-                                                    >DEL</Link>
+                                                    >DELETE</Link>
                                                     {/* <button
                                                         onClick={()=>destroy(event.id)}
                                                         id={event.id}
