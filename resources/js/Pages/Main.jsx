@@ -49,7 +49,7 @@ const UserTickets = ({ auth, events }) => {
                                                 <PrimaryButton >
                                                     View Event
                                                 </PrimaryButton>
-                                                <SuccessButton className="text-green-400">Book</SuccessButton>
+                                                {/* <SuccessButton className="text-green-400">Book</SuccessButton> */}
                                                 
                                             </Link> 
                                         </div>
