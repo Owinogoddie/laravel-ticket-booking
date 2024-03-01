@@ -3,7 +3,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head, useForm, Link} from '@inertiajs/react';
 
 const Create = ({auth,event}) => {
-    const { data, setData, errors, patch,progress  } = useForm({
+    const { data, setData, errors, put,progress  } = useForm({
         title: event.title,
         address: event.address,
         image: event.image,
@@ -16,7 +16,8 @@ const Create = ({auth,event}) => {
   
     function handleSubmit(e) {
         e.preventDefault();
-        patch(route("events.update",event.id));
+        // alert(JSON.stringify(data))
+        put(route("events.update",event.id),data);
     }
   return (
     <AuthenticatedLayout
@@ -74,22 +75,7 @@ const Create = ({auth,event}) => {
                             <div className="text-sm text-red-400">{errors.address}</div>
                         
                     </div>
-                    <div>
-                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                            for="file_input">Upload file</label>
-                        <input
-                        id="file_input" type="file" name="image"
-                            className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                            
-                            // value={data.image}
-                            onChange={(e) =>
-                                setData("image", e.target.files[0])
-                            }
-                            />
-                        
-                            <div className="text-sm text-red-400">{ errors.image }</div>
-                        
-                    </div>
+               
                     <div>
                         <label for="start_date"
                             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Start Date</label>
@@ -99,7 +85,7 @@ const Create = ({auth,event}) => {
                             setData("start_date", e.target.value)
                         }
                             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Laravel event"/>
+                            />
                         
                             <div className="text-sm text-red-400">{ errors.start_date }</div>
                         

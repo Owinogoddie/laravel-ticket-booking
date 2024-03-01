@@ -28,6 +28,15 @@ export default function MainLayout({ user, header, children }) {
                                 <NavLink href={route('tickets')} active={route().current('tickets')}>
                                     My Tickets
                                 </NavLink>
+                                {
+                                    user.role=='admin' &&(
+                                        <NavLink href={route('events.index')} active={route().current('events.index')}>
+                                    All events
+                                </NavLink>
+
+                                    )
+                                }
+                                
                             </div>
                         </div>
 

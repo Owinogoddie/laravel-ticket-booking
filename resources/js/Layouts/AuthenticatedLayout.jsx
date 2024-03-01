@@ -28,6 +28,9 @@ export default function Authenticated({ user, header, children }) {
                                 <NavLink href={route('events.create')} active={route().current('events.create')}>
                                     New Event
                                 </NavLink>
+                                <NavLink href={route('welcome')} active={route().current('welcome')}>
+                                    Home
+                                </NavLink>
                             </div>
                         </div>
 

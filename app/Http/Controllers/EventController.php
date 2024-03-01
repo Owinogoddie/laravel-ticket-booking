@@ -70,25 +70,8 @@ class EventController extends Controller
 
           
             return redirect()->route('events.index');
+           
         
-
-        // Validator::make($request->all(), [
-        //     'title' => ['required'],
-        //     'file' => ['required'],
-        // ])->validate();
-  
-        // $fileName = time().'.'.$request->file->extension();  
-        // $request->file->move(public_path('uploads'), $fileName);
-    
-        // File::create([
-        //     'title' => $request->title,
-        //     'name' => $fileName
-        // ]);
-    
-   
-        // Post::create($request->all());
-    
-        // return redirect()->route('posts.index');
     }
 
     /**
@@ -118,7 +101,7 @@ class EventController extends Controller
         Validator::make($request->all(), [
             'title' => ['required'],
             'address' => ['required'],
-            'image' => ['required'],
+            // 'image' => ['required'],
             'start_date' => ['required'],
             'end_date' => ['required'],
             'start_time' => ['required'],
@@ -126,36 +109,20 @@ class EventController extends Controller
             'description' => ['required'],
         ])->validate();
 
-        $file = $request->file('image');
+        Event::find($id)->update($request->all());
 
-        // $fileName = time().'.'.$request->image->extension();  
-        // $request->file->move(public_path('uploads'), $fileName);
-
-        $fileName = time() . '.' . $file->getClientOriginalExtension();
-    $destinationPath = public_path('uploads'); // Make sure the directory exists
-    $file->move($destinationPath, $fileName);
-    
-        Event::find($id)->update([
-        'title' => $request->title,
-        'image' => $fileName,
-        'address' => $request->address,
-        'start_date' => $request->start_date,
-        'end_date' => $request->end_date,
-        'start_time' => $request->start_time,
-        'num_tickets' => $request->num_tickets,
-        'description' => $request->description,
-        'user_id' => auth()->id(),
-        'slug' => Str::slug($request->title)]);
-        return redirect()->route('events.index');
+          
+            return redirect()->route('events.index');
+           
+        
     }
-
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Event $event)
+    public function destroy(Request $request,string $id)
     {
-        Storage::delete($event->image);
-        $event->delete();
+        // Storage::delete($event->image);
+        // $event->delete();
         Event::find($id)->delete();
         return redirect()->route('events.index');
     }

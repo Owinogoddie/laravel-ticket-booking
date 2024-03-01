@@ -3,9 +3,10 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link } from "@inertiajs/react";
 
 const Index = ({ auth, events }) => {
-    function destroy(e) {
+    function destroy(id) {
+        alert(id)
         if (confirm("Are you sure you want to delete this event?")) {
-            Inertia.delete(route("events.destroy", e.currentTarget.id));
+            Inertia.delete(route("events.destroy", id));
         }
     }
     return (
@@ -67,15 +68,20 @@ const Index = ({ auth, events }) => {
                                                     >
                                                         Edit
                                                     </Link>
-                                                    <button
-                                                        onClick={destroy}
+                                                    <Link className="mx-1 px-4 py-2 text-sm text-white bg-red-500 rounded"                                                   
+                                                    
+                                                    href={route("events.destroy",event.id)}
+                                                    method="delete"
+                                                    >DEL</Link>
+                                                    {/* <button
+                                                        onClick={()=>destroy(event.id)}
                                                         id={event.id}
                                                         tabIndex="-1"
                                                         type="button"
                                                         className="mx-1 px-4 py-2 text-sm text-white bg-red-500 rounded"
                                                     >
                                                         Delete
-                                                    </button>
+                                                    </button> */}
                                                 </div>
                                             </td>
                                         </tr>

@@ -48,7 +48,7 @@ const BookingForm = ({ auth, onClose,event,booked,isSubmitting, setIsSubmitting,
                 <input type="hidden" name="event_id" value={data.id} />
                 <input type="hidden" name="booked" value={data.booked} />
                 <Alert/>
-                <p className="text-lg text-green-300">Once you book, you will receive an email confirmation in your email</p>
+                <p className="text-sm text-green-300">Once you book, you will receive an email confirmation in your email from ticketly. Kindly check inbox or spam</p>
                 <br />
                 <div className="grid gap-6 mb-6 md:grid-cols-1">
                     

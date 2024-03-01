@@ -76,6 +76,11 @@ export default function Login({ status, canResetPassword }) {
                         <span className="ms-2 text-sm text-gray-600 dark:text-gray-400">Remember me</span>
                     </label>
                 </div>
+                <div className="text-slate-300 text-sm py-3">
+                    
+                <p>Admin email: theegoddie@gmail.com</p>
+                    <p>Admin password: theegoddie@gmail.com</p>
+                </div>
 
                 <div className="flex items-center justify-between  mt-4">
                     {canResetPassword && (
@@ -93,6 +98,7 @@ export default function Login({ status, canResetPassword }) {
                     >
                         Register
                     </Link>
+
 
                     <PrimaryButton className="ms-4" disabled={processing}>
                         Log in
